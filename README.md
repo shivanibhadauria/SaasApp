@@ -1,7 +1,7 @@
 ````markdown
 # Next.js Project 🚀
 
-This is my first **Next.js** project, built with modern tools and a focus on clean design and performance. The project uses **Tailwind CSS** for styling, integrates **shadcn** for pre-designed, accessible components, and includes dynamic routing.
+This is my first **Next.js** project, built with modern tools and a focus on clean design and performance. The project uses **Tailwind CSS** for styling, integrates **shadcn** for pre-designed, accessible components, and includes dynamic routing. Recently, I added **Clerk Authentication** for login and sign-up functionality.
 
 ---
 
@@ -11,6 +11,7 @@ This is my first **Next.js** project, built with modern tools and a focus on cle
 - **Tailwind CSS**: Utility-first CSS framework for rapid UI development.
 - **shadcn Components**: Pre-built, accessible, and customizable components.
 - **Dynamic Routing**: Navigation and route management with built-in Next.js capabilities.
+- **Clerk Authentication**: Easy-to-integrate authentication system with login and sign-up features.
 - **Modular Layout**: A clean and reusable layout structure.
 
 ---
@@ -34,7 +35,18 @@ To run the project locally, follow these steps:
    yarn install
    ```
 
-3. Start the development server:
+3. Set up Clerk:
+
+   - Sign up at [Clerk](https://clerk.dev/).
+   - Create a new project and copy your Clerk frontend API keys.
+   - Add the keys to your environment variables:
+     ```bash
+     NEXT_PUBLIC_CLERK_FRONTEND_API=<your-clerk-frontend-api>
+     CLERK_API_KEY=<your-clerk-api-key>
+     CLERK_JWT_KEY=<your-clerk-jwt-key>
+     ```
+
+4. Start the development server:
 
    ```bash
    npm run dev
@@ -42,7 +54,7 @@ To run the project locally, follow these steps:
    yarn dev
    ```
 
-4. Open your browser and navigate to:
+5. Open your browser and navigate to:
    ```
    http://localhost:3000
    ```
@@ -57,6 +69,8 @@ To run the project locally, follow these steps:
 ├── styles/            # Global and Tailwind styles
 ├── public/            # Static assets
 ├── layouts/           # Application layout files
+├── utils/             # Utility functions (for Clerk authentication)
+├── .env.local         # Environment variables (Clerk keys)
 └── README.md          # Project documentation
 ```
 
@@ -67,6 +81,7 @@ To run the project locally, follow these steps:
 1. **[Next.js](https://nextjs.org/)**: The React framework for building fast and scalable applications.
 2. **[Tailwind CSS](https://tailwindcss.com/)**: A utility-first CSS framework for styling.
 3. **[shadcn](https://shadcn.dev/)**: A component library for accessible and customizable UI elements.
+4. **[Clerk](https://clerk.dev/)**: Authentication and user management solution with login, sign-up, and profile management.
 
 ---
 
@@ -78,11 +93,13 @@ To run the project locally, follow these steps:
 - **Styling**: Added and configured **Tailwind CSS**.
 - **Routing**: Implemented dynamic routing using Next.js.
 - **Components**: Integrated **shadcn** for reusable and accessible components.
+- **Authentication**: Added **Clerk Authentication** for login and sign-up.
 
 ### Upcoming Features:
 
 - Build API connections for data fetching.
 - Implement reusable custom components.
+- Responsive design across all devices.
 
 ---
 
@@ -113,6 +130,23 @@ To run the project locally, follow these steps:
   const App = () => <Button>Click Me</Button>;
   ```
 
+### Adding Clerk Authentication:
+
+- To protect a page or route, use Clerk's higher-order component `withClerk` or hooks like `useClerk` to manage authentication states:
+
+  ```jsx
+  import { useUser } from "@clerk/clerk-react";
+
+  const ProfilePage = () => {
+    const { user, isLoaded, isSignedIn } = useUser();
+
+    if (!isLoaded) return <div>Loading...</div>;
+    if (!isSignedIn) return <div>Please sign in.</div>;
+
+    return <div>Welcome, {user.firstName}!</div>;
+  };
+  ```
+
 ---
 
 ## 💡 Acknowledgments
@@ -120,6 +154,7 @@ To run the project locally, follow these steps:
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
 - [shadcn Documentation](https://shadcn.dev)
+- [Clerk Documentation](https://clerk.dev/docs)
 
 ---
 
@@ -132,9 +167,13 @@ Feel free to open issues or submit pull requests to improve the project.
 ## 🛠 Future Plans
 
 - Responsive design for all devices.
-- Authentication and user management.
+- Further integration of Clerk for profile management.
 - Deployment to platforms like Vercel.
 
 ---
 
 **Happy Coding! 🎉**
+
+```
+
+```
