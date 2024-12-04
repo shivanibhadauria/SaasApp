@@ -1,8 +1,12 @@
+// eslint-disable no-restricted-syntax */
 /* eslint-disable prefer-const */
 /* eslint-disable no-prototype-builtins */
+
+
 import { type ClassValue, clsx } from "clsx";
 import qs from "qs";
 import { twMerge } from "tailwind-merge";
+
 
 import { aspectRatioOptions } from "@/constants";
 
@@ -85,10 +89,16 @@ export function removeKeysFromQuery({
 }
 
 // DEBOUNCE
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const debounce = (func: (...args: any[]) => void, delay: number) => {
   let timeoutId: NodeJS.Timeout | null;
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (...args: any[]) => {
     if (timeoutId) clearTimeout(timeoutId);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+   
+    // eslint-disable-next-line prefer-spread
     timeoutId = setTimeout(() => func.apply(null, args), delay);
   };
 };
@@ -97,6 +107,7 @@ export const debounce = (func: (...args: any[]) => void, delay: number) => {
 export type AspectRatioKey = keyof typeof aspectRatioOptions;
 export const getImageSize = (
   type: string,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image: any,
   dimension: "width" | "height"
 ): number => {
@@ -131,6 +142,7 @@ export const download = (url: string, filename: string) => {
 };
 
 // DEEP MERGE OBJECTS
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const deepMergeObjects = (obj1: any, obj2: any) => {
   if(obj2 === null || obj2 === undefined) {
     return obj1;

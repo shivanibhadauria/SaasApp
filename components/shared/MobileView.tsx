@@ -17,7 +17,7 @@ const MobileView = () => {
     <>
       <header className="header">
         <Link href="/">
-          <img
+          <Image
             src="/assets/images/logo.png"
             alt="logo"
             height={180}
@@ -64,7 +64,7 @@ const MobileView = () => {
                             href={link.route}
                           >
                             {" "}
-                            <img
+                            <Image
                               src={link.icon}
                               width={24}
                               height={24}

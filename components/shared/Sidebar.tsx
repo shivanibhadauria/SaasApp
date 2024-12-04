@@ -8,7 +8,6 @@ import { navLinks } from "@/constants";
 
 import { usePathname } from "next/navigation";
 import { Button } from "../ui/button";
-import { User } from "lucide-react";
 
 const Sidebar = () => {
   const pathname = usePathname();
@@ -42,7 +41,7 @@ const Sidebar = () => {
                       href={link.route}
                     >
                       {" "}
-                      <img
+                      <Image
                         src={link.icon}
                         width={24}
                         height={24}
@@ -71,7 +70,7 @@ const Sidebar = () => {
                       href={link.route}
                     >
                       {" "}
-                      <img
+                      <Image
                         src={link.icon}
                         width={24}
                         height={24}
